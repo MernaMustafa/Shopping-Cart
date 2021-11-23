@@ -1,0 +1,120 @@
+<div class="container" style="padding-left: 28px">
+  <h2>Register</h2>
+  <div class="registerdiv">
+    <form
+      [formGroup]="formData"
+      (ngSubmit)="onClickSubmit(formData.value)"
+      class="form"
+    >
+      <div class="form-group">
+        <input
+          type="hidden"
+          class="form-control"
+          id="userId"
+          formControlName="userId"
+        />
+      </div>
+      <div class="form-group">
+        <label class="col-lg-9">FirstName</label>
+        <br />
+        <div class="col-lg-9">
+          <input
+            type="text"
+            id="firstname"
+            class="form-control"
+            formControlName="firstName"
+            placeholder="First Name"
+            required
+            autofocus
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-9">LastName</label>
+        <br />
+        <div class="col-lg-9">
+          <input
+            type="text"
+            id="lastname"
+            class="form-control"
+            formControlName="lastName"
+            placeholder="Last Name"
+            required
+            autofocus
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-9">UserName</label>
+        <br />
+        <div class="col-lg-9">
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            formControlName="userName"
+            placeholder="Username"
+            required
+            autofocus
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-9">Email</label>
+        <br />
+        <div class="col-lg-9">
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email"
+            required
+            autofocus
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-9">Password</label>
+        <br />
+        <div class="col-lg-9">
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+            required
+            autofocus
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-9">Confirm Password</label>
+        <br />
+        <div class="col-lg-9">
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+            required
+            autofocus
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12 btn-submit">
+          <button type="submit" class="btn btn-success">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

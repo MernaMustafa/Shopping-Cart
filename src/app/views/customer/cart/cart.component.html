@@ -1,0 +1,66 @@
+<div class="container" style="padding-left: 15px">
+  <h1>{{ title }}</h1>
+  <hr />
+  <div *ngIf="cartItems?.length > 0; else emptyCart">
+    <div>
+      <app-search #search></app-search>
+      <app-filter-by-price #filterByPrice></app-filter-by-price>
+    </div>
+    <br />
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th class="text-center">Cost</th>
+          <th class="text-center">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let cartItem of cartItems
+              | search: search.searchText
+              | filterByPrice: filterByPrice.selected
+          "
+        >
+          <td
+            appHighlight
+            [searchedWord]="search.searchText"
+            [content]="cartItem.item.name"
+          >
+            {{ cartItem.item.name }}
+          </td>
+          <td>$ {{ cartItem.item.price }}</td>
+          <td class="text-center">
+            $ {{ cartItem.item.price * cartItem.quantity }}
+          </td>
+          <td class="text-center">
+            <input
+              [(ngModel)]="cartItem.quantity"
+              class="badge-light"
+              type="number"
+              min="0"
+              name="quantity"
+              style="margin-right: 15px"
+            />
+            <button
+              class="btn btn-warning"
+              (click)="updateQuantity(cartItem.id, cartItem.quantity)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #emptyCart>
+    <h3>Your cart is empty</h3>
+  </ng-template>
+
+  <button type="submit" class="btn btn-success" routerLink="../add">
+    Continue Shopping..
+  </button>
+</div>

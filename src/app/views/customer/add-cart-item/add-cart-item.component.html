@@ -1,0 +1,26 @@
+<div class="container" style="padding-left: 15px">
+  <h1>{{ title }}</h1>
+  <hr />
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.name }}</td>
+        <td>$ {{ item.price }}</td>
+
+        <td class="text-right">
+          <button class="btn btn-success" (click)="addCartItem(item.itemId)">
+            Add To Cart
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

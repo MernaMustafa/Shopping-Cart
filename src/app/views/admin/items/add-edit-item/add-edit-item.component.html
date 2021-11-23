@@ -1,0 +1,57 @@
+<div class="container" style="padding-left: 15px">
+  <div *ngIf="this.selectedId != null && this.selectedId != 0; else addItem">
+    <h1>Edit</h1>
+  </div>
+
+  <ng-template #addItem>
+    <h1>Create</h1>
+  </ng-template>
+
+  <h4>Item</h4>
+  <hr />
+  <div class="row">
+    <div class="col-md-4">
+      <form
+        [formGroup]="formData"
+        (ngSubmit)="onClickSubmit(formData.value)"
+        class="form"
+        novalidate
+      >
+        <div class="form-group">
+          <!-- <label for="item">Item</label> -->
+          <input
+            type="hidden"
+            class="form-control"
+            id="id"
+            formControlName="id"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            formControlName="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Price</label>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            formControlName="price"
+          />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <a routerLink="/item">Back to List</a>
+  </div>
+</div>
