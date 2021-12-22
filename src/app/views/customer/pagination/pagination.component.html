@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button
+        class="btn btn-btn-outline"
+        (click)="hasPrev && getPage(data.currentPage - 1)"
+      >
+        ❮ Previous
+      </button>
+    </div>
+
+    <div class="col">
+      <div class="text-center">
+        Page {{ data.currentPage }} - {{ data.totalPages }}
+      </div>
+    </div>
+    <div class="col">
+      <button
+        class="float-right btn btn-btn-outline"
+        (click)="hasNext && getPage(data.currentPage + 1)"
+      >
+        Next ❯
+      </button>
+    </div>
+  </div>
+</div>

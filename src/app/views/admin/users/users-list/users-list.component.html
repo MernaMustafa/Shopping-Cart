@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of users.list">
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.userName }}</td>
@@ -37,4 +37,14 @@
       </tr>
     </tbody>
   </table>
+  <br />
+  <br />
+  <app-pagination
+    [data]="users"
+    [hasPrev]="users.hasPreviousPage"
+    [hasNext]="users.hasNextPage"
+    (onPageChange)="getPage($event)"
+  ></app-pagination>
+  <br />
+  <br />
 </div>

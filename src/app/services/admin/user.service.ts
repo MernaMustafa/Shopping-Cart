@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { PaginationResponse } from "src/app/models/pagination-response";
 import { User } from "src/app/models/user";
 import { ApiService } from "../api.service";
 
@@ -8,8 +9,8 @@ import { ApiService } from "../api.service";
 })
 export class UserService {
   constructor(private apiService: ApiService) {}
-  getUsers(): Observable<User[]> {
-    return this.apiService.get("users");
+  getUsers(pageNumber): Observable<PaginationResponse<User>> {
+    return this.apiService.get("users" + "/" + pageNumber);
   }
 
   deleteUser(id): Observable<User> {

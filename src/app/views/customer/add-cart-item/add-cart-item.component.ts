@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { CartItem } from "src/app/models/cart-item";
 import { Item } from "src/app/models/item";
 import { OrderItem } from "src/app/models/order-item";
+import { PaginationResponse } from "src/app/models/pagination-response";
 import { ItemService } from "src/app/services/admin/item.service";
 import { CartItemService } from "src/app/services/customer/cart-item.service";
 
@@ -14,7 +15,7 @@ import { CartItemService } from "src/app/services/customer/cart-item.service";
 })
 export class AddCartItemComponent implements OnInit {
   title: string;
-  items: Item[];
+  items: PaginationResponse<Item>;
   cartItem: CartItem;
   orderItem: OrderItem;
   constructor(
@@ -46,9 +47,13 @@ export class AddCartItemComponent implements OnInit {
     );
   }
 
-  getItems() {
-    this.itemService.getItems().subscribe((data) => {
+  getItems(pageNumber = 1) {
+    this.itemService.getItems(pageNumber).subscribe((data) => {
       this.items = data;
     });
+  }
+
+  getPage(pageNumber) {
+    this.getItems(pageNumber);
   }
 }

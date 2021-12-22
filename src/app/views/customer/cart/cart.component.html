@@ -1,10 +1,9 @@
 <div class="container" style="padding-left: 15px">
   <h1>{{ title }}</h1>
   <hr />
-  <div *ngIf="cartItems?.length > 0; else emptyCart">
+  <div *ngIf="cartItems.list?.length > 0; else emptyCart">
     <div>
-      <app-search #search></app-search>
-      <app-filter-by-price #filterByPrice></app-filter-by-price>
+      <app-search (filteredCartItems)="filter($event)"></app-search>
     </div>
     <br />
     <table class="table">
@@ -17,18 +16,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          *ngFor="
-            let cartItem of cartItems
-              | search: search.searchText
-              | filterByPrice: filterByPrice.selected
-          "
-        >
-          <td
-            appHighlight
-            [searchedWord]="search.searchText"
-            [content]="cartItem.item.name"
-          >
+        <tr *ngFor="let cartItem of cartItems.list">
+          <td>
             {{ cartItem.item.name }}
           </td>
           <td>$ {{ cartItem.item.price }}</td>
@@ -54,13 +43,24 @@
         </tr>
       </tbody>
     </table>
-  </div>
+    <br />
+    <br />
+    <app-pagination
+      [data]="cartItems"
+      [hasPrev]="cartItems.hasPreviousPage"
+      [hasNext]="cartItems.hasNextPage"
+      (onPageChange)="getPage($event)"
+    ></app-pagination>
 
+    <ng-template #filterPages> </ng-template>
+    <br />
+    <br />
+  </div>
   <ng-template #emptyCart>
     <h3>Your cart is empty</h3>
   </ng-template>
 
-  <button type="submit" class="btn btn-success" routerLink="../add">
-    Continue Shopping..
+  <button type="submit" class="btn btn-outline-success" routerLink="../add">
+    ❮❮ Continue Shopping
   </button>
 </div>

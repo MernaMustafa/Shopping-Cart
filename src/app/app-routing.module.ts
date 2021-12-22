@@ -4,6 +4,7 @@ import { AdminGuard } from "./guards/admin.guard";
 import { AuthGuard } from "./guards/auth.guard";
 import { AddEditItemComponent } from "./views/admin/items/add-edit-item/add-edit-item.component";
 import { ItemsListComponent } from "./views/admin/items/items-list/items-list.component";
+import { ItemsList2Component } from "./views/admin/items/items-list2/items-list2.component";
 import { AddEditUserComponent } from "./views/admin/users/add-edit-user/add-edit-user.component";
 import { UsersListComponent } from "./views/admin/users/users-list/users-list.component";
 import { AddCartItemComponent } from "./views/customer/add-cart-item/add-cart-item.component";
@@ -38,7 +39,8 @@ const routes: Routes = [
   },
   {
     path: "item",
-    component: ItemsListComponent,
+    //component: ItemsListComponent,
+    component: ItemsList2Component, //primeNG
     canActivate: [AuthGuard, AdminGuard],
   },
   {

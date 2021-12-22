@@ -1,13 +1,21 @@
-<div class="container" style="width: 70%; display: inline-block">
-  <div class="search">
+<div class="container">
+  <div class="input-group" style="width: 60%">
     <input
+      #searchWord
       class="form-control"
       type="text"
       name="search"
-      [(ngModel)]="searchText"
       autocomplete="off"
       placeholder="Start searching for a cartItem by name"
       autofocus
     />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        (click)="searchByName(pageNumber, searchWord.value)"
+      >
+        Search
+      </button>
+    </div>
   </div>
 </div>

@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of items">
+      <tr *ngFor="let item of items.list">
         <td>{{ item.name }}</td>
         <td>$ {{ item.price }}</td>
 
@@ -35,4 +35,14 @@
       </tr>
     </tbody>
   </table>
+  <br />
+  <br />
+  <app-pagination
+    [data]="items"
+    [hasPrev]="items.hasPreviousPage"
+    [hasNext]="items.hasNextPage"
+    (onPageChange)="getPage($event)"
+  ></app-pagination>
+  <br />
+  <br />
 </div>

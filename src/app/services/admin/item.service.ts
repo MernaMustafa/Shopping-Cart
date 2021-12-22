@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Item } from "src/app/models/item";
+import { PaginationResponse } from "src/app/models/pagination-response";
 import { ApiService } from "../api.service";
 
 @Injectable({
@@ -8,8 +9,8 @@ import { ApiService } from "../api.service";
 })
 export class ItemService {
   constructor(private apiService: ApiService) {}
-  getItems(): Observable<Item[]> {
-    return this.apiService.get("items");
+  getItems(pageNumber): Observable<PaginationResponse<Item>> {
+    return this.apiService.get("items" + "/page/" + pageNumber);
   }
 
   deleteItem(id): Observable<Item> {
